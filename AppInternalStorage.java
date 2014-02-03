@@ -11,11 +11,11 @@ import org.json.JSONObject;
 
 import android.content.Context;
 
-public class AppInternalStorage {
+public class JsonIS {
 	private Context context;
 	private String namespace;
 	private JSONObject JsonObj;
-	public AppInternalStorage(Context context,String namespace){
+	public JsonIS(Context context,String namespace){
 		this.context = context;
 		this.namespace = namespace;				
 		
