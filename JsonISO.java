@@ -1,5 +1,4 @@
 package com.vfhhu.lib;
-
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.InputStreamReader;
@@ -9,14 +8,14 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import android.content.Context;
 
-public class JsonIS {
+public class JsonISO {
 	private Context context;
 	private String namespace;
 	private JSONObject JsonObj;
-	public JsonIS(Context context,String namespace){
+	public JsonISO(Context context,String namespace){
 		this.context = context;
 		this.namespace = namespace;				
-		
+
 		String jsonStr=Read(namespace);
 		boolean isNew=jsonStr.equals("");
 		if(isNew)jsonStr="{}";
@@ -37,8 +36,14 @@ public class JsonIS {
 		}
 		Write(namespace,JsonObj.toString());
 	}
-	
-	
+	public JSONObject getJSON(){					
+		return JsonObj;
+	}
+	public String getString(){					
+		return JsonObj.toString();
+	}
+
+
 	public boolean getBoolean(String key){		
 		return JsonObj.optBoolean(key);//false
 	}
@@ -60,7 +65,7 @@ public class JsonIS {
 	public JSONObject getJSONObject(String key){					
 		return JsonObj.optJSONObject(key);//null
 	}
-	
+
 	public void set(String key,boolean value){		
 		try {
 			JsonObj.put(key, value);
@@ -115,7 +120,7 @@ public class JsonIS {
 			e.printStackTrace();
 		}		
 	}
-	
+
 	private boolean Write(String file,String data){
 		context.getDir(file, Context.MODE_PRIVATE);
 		try {	
